@@ -55,7 +55,7 @@
 	>
 	{#if jobs.length > 0}
 		<div
-			class="grid lg:px-32 lg:grid-cols-6 md:grid-cols-2 sm:grid-cols-1 gap-8 grid-flow-column md:px-0 sm:px-0 mb-8"
+			class="grid 2xl:px-32 2xl:grid-cols-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 grid-flow-column md:px-0 sm:px-0 mb-8"
 		>
 			<label
 				for="jobs"
@@ -144,7 +144,7 @@
 		</div>
 	{/if}
 	<div
-		class="grid lg:px-32 lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-1 gap-8 grid-flow-column md:px-0 sm:px-0"
+		class="grid 2xl:px-32 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-8 grid-flow-column md:px-0 sm:px-0"
 	>
 		{#each jobs as j (j.id)}
 			<div

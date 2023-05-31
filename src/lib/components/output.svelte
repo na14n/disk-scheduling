@@ -91,11 +91,11 @@
 <div
 	class="w-full h-fit grow flex flex-col justify-center items-center gap-4 lg:p-5 md:p-0 "
 >
-	<div class="w-full grow max-h-screen lg:px-64 md:px-0">
+	<div class="w-full grow max-h-screen 2xl:px-64 md:px-0">
 		<canvas id="test" bind:this={ctx} class="dark:bg-tertiary-300 rounded-lg p-4" />
 	</div>
 
-	<div class="h-fit w-full py-5 lg:px-64 md:px-0">
+	<div class="h-fit w-full py-5 2xl:px-64 md:px-0">
 		<div
 			class="w-full lg:p-5 flex justify-center items-center flex-wrap lg:gap-32 md:gap-2 md:p-0 mb-8"
 		>

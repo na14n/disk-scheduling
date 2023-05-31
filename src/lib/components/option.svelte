@@ -278,6 +278,8 @@
 	async function Clook() {
 		processedJobs.sort((a, b) => a.track - b.track);
 
+		console.log(direction);
+
 		if (direction == true) {
 			const lower = processedJobs.filter((item) => item.track < sp.track);
 			lower.sort((a, b) => a.track - b.track);
@@ -303,6 +305,7 @@
 			processedJ.update((prev) => (prev = processedJobs));
 		} else if (direction == false) {
 			const higher = processedJobs.filter((item) => item.track > sp.track);
+			higher.sort((a, b) => b.track - a.track);
 			processedJobs = processedJobs.filter((item) => item.track <= sp.track);
 			processedJobs.sort((a, b) => b.track - a.track);
 

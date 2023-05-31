@@ -27,8 +27,8 @@
 	<slot />
 	<!-- ---- / ---- -->
 	<svelte:fragment slot="pageFooter">
-		<div class="p-2 flex justify-center items-center gap-8">
-			<span class="text-slate-500 dark:text-slate-400 text-xs"
+		<div class="p-2 flex justify-center items-center gap-4 flex-wrap">
+			<span class="text-slate-500 dark:text-slate-400 text-xs text-center"
 				>A Disk scheduling algorithm solver made by Ian Nicolas Antonio</span
 			>
 			<div class="place-self-end">
