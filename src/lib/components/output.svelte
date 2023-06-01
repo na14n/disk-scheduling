@@ -1,11 +1,11 @@
 <script>
 	import Chart from 'chart.js/auto';
+	import ChartDataLabels from 'chartjs-plugin-datalabels';
 	import { tab } from '$lib/stores/tabs';
 	import { variables } from '$lib/stores/variables';
 	import { processedJ } from '$lib/stores/processedJobs';
 	import { jobList } from '$lib/stores/jobList';
 	import { onMount, onDestroy } from 'svelte';
-
 	let tabs = 2;
 	let variable = {};
 	let processedJobs = [];
@@ -26,6 +26,9 @@
 	});
 
 	onMount(() => {
+		Chart.register(
+			ChartDataLabels
+		)
 		const formattedData = processedJobs.map((item) => ({
 			label: `Job ${item.id}`,
 			data: item.track
@@ -54,6 +57,13 @@
 				plugins: {
 					legend: {
 						display: false
+					},
+					datalabels: {
+						// Configure the datalabels plugin
+						color: 'rgb(117,74,160)',
+						anchor: 'start',
+						align: 'end',
+						borderRadius: 5
 					}
 				},
 				maintainAspectRatio: false,
@@ -88,9 +98,7 @@
 	let st = ((variable.ending - variable.starting + 1) * variable.armMovement) / thm;
 </script>
 
-<div
-	class="w-full h-fit grow flex flex-col justify-center items-center gap-4 lg:p-5 md:p-0 "
->
+<div class="w-full h-fit grow flex flex-col justify-center items-center gap-4 lg:p-5 md:p-0">
 	<div class="w-full grow max-h-screen 2xl:px-64 md:px-0">
 		<canvas id="test" bind:this={ctx} class="dark:bg-tertiary-300 rounded-lg p-4" />
 	</div>
@@ -99,13 +107,12 @@
 		<div
 			class="w-full lg:p-5 flex justify-center items-center flex-wrap lg:gap-32 md:gap-2 md:p-0 mb-8"
 		>
-
-			<div class="font-semibold w-fit h-max p-1 ">
+			<div class="font-semibold w-fit h-max p-1">
 				Total Head Movement :
 				<span class="font-normal text-slate-600 dark:text-slate-400"> {thm} </span>
 			</div>
 
-			<div class="font-semibold w-fit h-max p-1 ">
+			<div class="font-semibold w-fit h-max p-1">
 				Seek Time
 				<span class="font-normal text-slate-600 dark:text-slate-400"> {st.toFixed(3)} μs </span>
 			</div>
