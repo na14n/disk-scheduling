@@ -26,9 +26,7 @@
 	});
 
 	onMount(() => {
-		Chart.register(
-			ChartDataLabels
-		)
+		Chart.register(ChartDataLabels);
 		const formattedData = processedJobs.map((item) => ({
 			label: `Job ${item.id}`,
 			data: item.track
@@ -54,6 +52,11 @@
 			data: data,
 			options: {
 				clip: false,
+				responsive: true,
+				interaction: {
+					intersect: false,
+					mode: 'index'
+				},
 				plugins: {
 					legend: {
 						display: false
@@ -61,13 +64,11 @@
 					datalabels: {
 						// Configure the datalabels plugin
 						color: 'rgb(117,74,160)',
-						anchor: 'start',
-						align: 'end',
+						anchor: 'center',
+						align: 'start',
 						borderRadius: 5
 					}
 				},
-				maintainAspectRatio: false,
-				responsive: true,
 				elements: {
 					line: {
 						borderWidth: 1
@@ -78,7 +79,13 @@
 						min: variable.starting,
 						max: variable.ending,
 						ticks: {
-							stepSize: variable.steps
+							stepSize: variable.steps,
+							padding: 10,
+						}
+					},
+					x: {
+						ticks: {
+							padding: 12,
 						}
 					}
 				}
@@ -98,9 +105,9 @@
 	let st = ((variable.ending - variable.starting + 1) * variable.armMovement) / thm;
 </script>
 
-<div class="w-full h-fit grow flex flex-col justify-center items-center gap-4 lg:p-5 md:p-0">
+<div class="w-full h-fit grow flex flex-col justify-center items-center gap-4 xl:p-5 lg:p-0">
 	<div class="w-full grow max-h-screen 2xl:px-64 md:px-0">
-		<canvas id="test" bind:this={ctx} class="dark:bg-tertiary-300 rounded-lg p-4" />
+		<canvas id="test" bind:this={ctx} class="dark:bg-tertiary-300 rounded-lg" />
 	</div>
 
 	<div class="h-fit w-full py-5 2xl:px-64 md:px-0">
